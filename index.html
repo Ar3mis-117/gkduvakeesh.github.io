@@ -94,6 +94,40 @@ body:has(.nb.on) main { transform: scale(0.98); filter: blur(6px); }
 .hero h1 span,.hero h1 em{display:block}
 @keyframes bl{50%{opacity:0}}
 .tag{max-width:32rem;font-size:1.15rem;color:var(--muted);margin:0 0 1.75rem; line-height: 1.6}
+.pub-badge { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.75rem; 
+  padding: 0.5rem 1rem; 
+  margin-bottom: 2rem; 
+  background: var(--agar); 
+  border: 1px solid var(--line); 
+  border-radius: 999px; 
+  text-decoration: none; 
+  transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out); 
+}
+@media (hover: hover) and (pointer: fine) { 
+  .pub-badge:hover { border-color: var(--moss); } 
+}
+.pub-badge:active { transform: scale(0.97); }
+.pub-badge .lbl { 
+  font: 500 0.65rem/1.5 var(--mono); 
+  text-transform: uppercase; 
+  letter-spacing: 0.06em; 
+  color: var(--moss); 
+}
+.pub-badge .txt { 
+  font-size: 0.9rem; 
+  color: var(--ink); 
+  font-weight: 500; 
+}
+.pub-badge i { 
+  color: var(--accent); 
+  font-style: normal; 
+  font-family: var(--mono); 
+  font-size: 1.1rem; 
+  line-height: 1; 
+}
 .cta{display:flex;flex-wrap:wrap;margin:0 0 2.5rem}.cta .btn{margin-bottom:.6rem}
 .facts{display:grid;gap:.8rem;border-top:1px solid var(--line);padding-top:1.5rem;max-width:32rem}
 .facts div{display:grid;grid-template-columns:8rem 1fr;gap:1rem;font-size:.9rem}.facts b{font-weight:600;color:var(--ink)}
@@ -274,7 +308,43 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;paddi
 <div class="nb" id="nb" role="dialog" aria-modal="true" aria-label="Project notes"><div class="page" id="pg"></div></div>
 
 <script>
-const D = {"me": {"first": "G K", "last": "Duvakeesh", "mark": "GKD", "role": "Computational biology student", "tagline": "Building a deep neural network that predicts how proteins crystallize. Bench-trained in biotechnology, now learning to model it.", "city": "Chennai", "email": "gkduvakeesh@gmail.com", "photo": "", "resume": "resume.pdf", "about": "I'm a biotechnologist turned computational biologist. I learned the wet lab first, from bioreactors to PCR to AAS, and now I'm using machine learning to predict what the experiment should look like before anyone pipettes."}, "links": [["Code and experiments", "GitHub", "https://github.com/Ar3mis-117"], ["Professional updates", "LinkedIn", "https://www.linkedin.com/in/duvakeesh-g-k-87580535a/"], ["The published paper", "Journal of Chemistry", "https://doi.org/10.1155/joch/8217730"]], "facts": [["Now", "M.Tech Computational Biology, Anna University (2027)"], ["Published", "Journal of Chemistry, Wiley, November 2024"], ["Interested in", "Protein ML, genomics, vision transformers, LLM architecture"]], "work": [{"kind": "Deep learning, protein crystallization", "title": "Protein Crystallization Prediction", "short": "Protein / Crystals", "when": "Ongoing", "where": "Anna University, Chennai", "blurb": "A neural network framework that predicts the reagent recipe needed to crystallize a protein.", "points": ["Developing a deep neural network to predict the reagent recipe for crystallizing a protein."], "link": null, "image": "images/protein-crystallization.jpg", "art": "lattice", "sw": ["#0B6E4F", "#9AD1BD", "#111111"], "img": ""}, {"kind": "Environmental biotechnology, research project", "title": "Biochar Adsorbent for Cd(II) Removal", "short": "Biochar / Adsorbent", "when": "6 months", "where": "Government College of Technology, Coimbatore", "blurb": "Low-cost biochar from coconut shell and spent coffee grounds, built to pull cadmium out of contaminated water.", "points": ["Synthesized and functionalized a mixed biochar adsorbent from agricultural waste for heavy metal removal.", "Fitted Langmuir and Freundlich isotherms to quantify monolayer capacity and surface heterogeneity.", "Ran kinetic studies (pseudo-first and pseudo-second order) and thermodynamics (ΔG°, ΔH°, ΔS°).", "Measured residual Cd(II) by Atomic Absorption Spectroscopy.", "Modeled nonlinear regression curves and produced publication-ready figures in Origin and Excel."], "link": null, "image": "images/biochar-adsorption.jpg", "art": "pores", "sw": ["#3B2F2A", "#C9A66B", "#E8E1D4"], "img": ""}, {"kind": "Publication, peer-reviewed review", "title": "Biochar as a Sustainable Adsorbent for Heavy Metal Removal From Polluted Waters", "short": "Biochar / Review", "when": "November 2024", "where": "Journal of Chemistry (Wiley)", "blurb": "A comprehensive outlook on turning biomass into adsorbents for water remediation. Co-authored.", "points": ["Synthesized the literature on pyrolytic biomass conversion, surface functionalization and sorption kinetics."], "link": ["Read the paper", "https://doi.org/10.1155/joch/8217730"], "image": "images/publication.jpg", "art": "paper", "sw": ["#1D4E89", "#F2F2F0", "#E4572E"], "img": ""}], "play": [{"title": "Poster study", "note": "Illustrator", "image": "images/play-1.jpg", "art": "poster", "img": ""}, {"title": "Motion test", "note": "After Effects", "image": "images/play-2.jpg", "art": "motion", "img": ""}, {"title": "Photo edit", "note": "Photoshop", "image": "images/play-3.jpg", "art": "halftone", "img": ""}, {"title": "Short cut", "note": "Premiere Pro", "image": "images/play-4.jpg", "art": "film", "img": ""}], "experience": [{"org": "TICEL Bio Park, Chennai", "role": "Student Intern", "span": "1 month", "points": ["Downstream bioprocessing, biomolecule separation and purification workflows.", "Microbial tests, staining and quality control evaluations.", "Studied the principles behind MALDI-TOF mass spectrometry, Sanger sequencing, HPLC and column chromatography."]}, {"org": "AviGen Biotech Pvt Ltd", "role": "Student Intern", "span": "1 month", "points": ["Upstream bioprocessing, bioreactor handling and aseptic cell culture.", "Extracted genomic DNA and total RNA for molecular diagnostics.", "PCR amplification, SDS-PAGE and agarose gel electrophoresis."]}, {"org": "Harman Institute of Science and Technology", "role": "Student Intern", "span": "1 month", "points": ["Synthesized and characterized functional nanomaterials.", "Trained in ethical laboratory animal handling and housing under regulatory protocols."]}], "education": [["2027", "M.Tech Computational Biology", "ACT Campus, Anna University, Chennai", "Pursuing"], ["2024", "B.Tech Industrial Biotechnology", "Government College of Technology, Coimbatore", "7.60 CGPA"], ["2020", "Higher Secondary, Class XII", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "90.10%"], ["2018", "Matriculation, Class X", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "83.80%"]], "skills": [["Programming and ML", ["Python", "Pandas", "NumPy", "Scikit-learn", "Keras", "PyTorch", "Statistical data analysis"]], ["Laboratory", ["Molecular biology", "DNA and RNA extraction", "PCR", "SDS-PAGE", "Gel electrophoresis", "Upstream and downstream bioprocessing", "Microbial staining and culture"]], ["Instrumentation", ["Atomic Absorption Spectroscopy"]], ["Software and design", ["Origin", "Microsoft Excel", "Photoshop", "Illustrator", "Premiere Pro", "After Effects"]], ["Languages", ["Tamil (native)", "English (full professional)"]]], "activities": [["Exordium", "Organizing committee member for the inter-college event, Government College of Technology."], ["Sys-Com", "Department committee that handled editing and design work for events, 2020 to 2024."]], "resume": "", "themes": [{"id": "petri", "name": "Petri"}], "text": {"logo": "D_", "open_badge": "Open to collaborations", "nav": [["hero", "Input", "Home"], ["work", "Models", "Projects"], ["exp", "Pipeline", "Experience"], ["about", "Weights", "About"], ["contact", "Deploy", "Contact"]], "hero_kicker": "model.py", "hero_cta": "Get in touch", "hero_hint": "↓ Move over the network, or click to fire a forward pass", "hero_sticker": "model.fit()", "net_alt": "A small neural network passing signals between layers. Move over it or click to fire it.", "net_layers": ["input", "hidden 1", "hidden 2", "output"], "net_epoch": "epoch", "net_loss": "loss", "ticker": ["Protein ML", "Backprop", "Crystallization", "Attention", "Genomics", "PyTorch", "Vision transformers", "Keras", "Biochar", "GPU"], "models_label": "02 / Models · Projects", "models_title": ["Selected", "models"], "models_intro": "Each card is a project. Open one to read its model card.", "model_prefix": "model_", "model_open": "Open model card →", "card_label": "Model card", "card_focus": "Focus", "card_when": "When", "card_where": "Where", "card_log": "Training log", "card_close": "Close ✕", "pipe_label": "03 / Pipeline · Experience", "pipe_title": ["Hands-on", "stages"], "pipe_intro": "", "stage_prefix": "stage_", "about_label": "04 / Weights · About me", "about_title": ["Wet lab to", "neural net"], "about_intro": "", "about_side": "About", "out_label": "05 / Outputs · Design work", "out_title": ["Playground", ""], "out_intro": "Design and motion experiments that don't fit a case study.", "out_prefix": "out_", "contact_label": "06 / Deploy · Contact", "contact_title": ["Say", "hello"], "contact_intro": "Research collaborations, internships, or just a good protein story.", "copy_btn": "Click to copy", "copied": "Copied", "resume_btn": "Download résumé", "footer_right": ""}, "defaultTheme": "paper"};
+const D = {
+  "me": { "first": "G K", "last": "Duvakeesh", "mark": "GKD", "role": "Computational biology student", "tagline": "Building a deep neural network that predicts how proteins crystallize. Bench-trained in biotechnology, now learning to model it.", "city": "Chennai", "email": "gkduvakeesh@gmail.com", "photo": "", "resume": "resume.pdf", "about": "I'm a biotechnologist turned computational biologist. I learned the wet lab first, from bioreactors to PCR to AAS, and now I'm using machine learning to predict what the experiment should look like before anyone pipettes." },
+  "links": [["Code and experiments", "GitHub", "https://github.com/Ar3mis-117"], ["Professional updates", "LinkedIn", "https://www.linkedin.com/in/duvakeesh-g-k-87580535a/"], ["The published paper", "Journal of Chemistry", "https://doi.org/10.1155/joch/8217730"]],
+  "facts": [["Now", "M.Tech Computational Biology, Anna University (2027)"], ["Interested in", "Protein ML, genomics, vision transformers, LLM architecture"]],
+  "work": [
+    {
+      "kind": "Deep learning, protein crystallization", "title": "Protein Crystallization Prediction", "short": "Protein / Crystals", "when": "Ongoing", "where": "Anna University, Chennai",
+      "blurb": "A neural network framework that predicts the reagent recipe needed to crystallize a protein.",
+      "points": ["Developing a deep neural network to predict the reagent recipe for crystallizing a protein."],
+      "status": "In development", "tools": "PyTorch, Scikit-learn, Pandas", "result": "Baseline architectures defined; dataset preprocessing underway.", "next": "Training the primary neural network and benchmarking initial loss curves against a random forest baseline.",
+      "link": null, "image": "images/protein-crystallization.jpg", "art": "lattice", "sw": ["#0B6E4F", "#9AD1BD", "#111111"], "img": ""
+    },
+    {
+      "kind": "Environmental biotechnology, research project", "title": "Biochar Adsorbent for Cd(II) Removal", "short": "Biochar / Adsorbent", "when": "6 months", "where": "Government College of Technology, Coimbatore",
+      "blurb": "Low-cost biochar from coconut shell and spent coffee grounds, built to pull cadmium out of contaminated water.",
+      "points": ["Synthesized and functionalized a mixed biochar adsorbent from agricultural waste for heavy metal removal.", "Fitted Langmuir and Freundlich isotherms to quantify monolayer capacity and surface heterogeneity.", "Ran kinetic studies (pseudo-first and pseudo-second order) and thermodynamics (ΔG°, ΔH°, ΔS°).", "Measured residual Cd(II) by Atomic Absorption Spectroscopy.", "Modeled nonlinear regression curves and produced publication-ready figures in Origin and Excel."],
+      "status": "Completed", "tools": "Origin, Excel, Atomic Absorption Spectroscopy", "result": "Yielded high Cd(II) removal efficiency with robust isotherm fits.",
+      "link": null, "image": "images/biochar-adsorption.jpg", "art": "pores", "sw": ["#3B2F2A", "#C9A66B", "#E8E1D4"], "img": ""
+    },
+    {
+      "kind": "Publication, peer-reviewed review", "title": "Biochar as a Sustainable Adsorbent for Heavy Metal Removal From Polluted Waters", "short": "Biochar / Review", "when": "November 2024", "where": "Journal of Chemistry (Wiley)",
+      "blurb": "A comprehensive outlook on turning biomass into adsorbents for water remediation. Co-authored.",
+      "points": ["Synthesized the literature on pyrolytic biomass conversion, surface functionalization and sorption kinetics."],
+      "status": "Published", "tools": "Literature Synthesis, Academic Writing", "result": "Peer-reviewed and published in Wiley's Journal of Chemistry.",
+      "link": ["Read the paper", "https://doi.org/10.1155/joch/8217730"], "image": "images/publication.jpg", "art": "paper", "sw": ["#1D4E89", "#F2F2F0", "#E4572E"], "img": ""
+    }
+  ],
+  "play": [{ "title": "Poster study", "note": "Illustrator", "image": "images/play-1.jpg", "art": "poster", "img": "" }, { "title": "Motion test", "note": "After Effects", "image": "images/play-2.jpg", "art": "motion", "img": "" }, { "title": "Photo edit", "note": "Photoshop", "image": "images/play-3.jpg", "art": "halftone", "img": "" }, { "title": "Short cut", "note": "Premiere Pro", "image": "images/play-4.jpg", "art": "film", "img": "" }],
+  "experience": [{ "org": "TICEL Bio Park, Chennai", "role": "Student Intern", "span": "1 month", "points": ["Downstream bioprocessing, biomolecule separation and purification workflows.", "Microbial tests, staining and quality control evaluations.", "Studied the principles behind MALDI-TOF mass spectrometry, Sanger sequencing, HPLC and column chromatography."] }, { "org": "AviGen Biotech Pvt Ltd", "role": "Student Intern", "span": "1 month", "points": ["Upstream bioprocessing, bioreactor handling and aseptic cell culture.", "Extracted genomic DNA and total RNA for molecular diagnostics.", "PCR amplification, SDS-PAGE and agarose gel electrophoresis."] }, { "org": "Harman Institute of Science and Technology", "role": "Student Intern", "span": "1 month", "points": ["Synthesized and characterized functional nanomaterials.", "Trained in ethical laboratory animal handling and housing under regulatory protocols."] }],
+  "education": [["2027", "M.Tech Computational Biology", "ACT Campus, Anna University, Chennai", "Pursuing"], ["2024", "B.Tech Industrial Biotechnology", "Government College of Technology, Coimbatore", "7.60 CGPA"], ["2020", "Higher Secondary, Class XII", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "90.10%"], ["2018", "Matriculation, Class X", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "83.80%"]],
+  "skills": [["Programming and ML", ["Python", "Pandas", "NumPy", "Scikit-learn", "Keras", "PyTorch", "Statistical data analysis"]], ["Laboratory", ["Molecular biology", "DNA and RNA extraction", "PCR", "SDS-PAGE", "Gel electrophoresis", "Upstream and downstream bioprocessing", "Microbial staining and culture"]], ["Instrumentation", ["Atomic Absorption Spectroscopy"]], ["Software and design", ["Origin", "Microsoft Excel", "Photoshop", "Illustrator", "Premiere Pro", "After Effects"]], ["Languages", ["Tamil (native)", "English (full professional)"]]],
+  "activities": [["Exordium", "Organizing committee member for the inter-college event, Government College of Technology."], ["Sys-Com", "Department committee that handled editing and design work for events, 2020 to 2024."]],
+  "resume": "",
+  "themes": [{ "id": "petri", "name": "Petri" }],
+  "text": { "logo": "D_", "open_badge": "Open to collaborations", "nav": [["hero", "Input", "Home"], ["work", "Models", "Projects"], ["exp", "Pipeline", "Experience"], ["about", "Weights", "About"], ["contact", "Deploy", "Contact"]], "hero_kicker": "model.py", "hero_cta": "Get in touch", "hero_hint": "↓ Move over the network, or click to fire a forward pass", "hero_sticker": "model.fit()", "net_alt": "A small neural network passing signals between layers. Move over it or click to fire it.", "net_layers": ["input", "hidden 1", "hidden 2", "output"], "net_epoch": "epoch", "net_loss": "loss", "ticker": ["Protein ML", "Backprop", "Crystallization", "Attention", "Genomics", "PyTorch", "Vision transformers", "Keras", "Biochar", "GPU"], "models_label": "02 / Models · Projects", "models_title": ["Selected", "models"], "models_intro": "Each card is a project. Open one to read its model card.", "model_prefix": "model_", "model_open": "Open model card →", "card_label": "Model card", "card_focus": "Focus", "card_when": "When", "card_where": "Where", "card_status": "Status", "card_tools": "Tools", "card_result": "Result", "card_next": "Up next", "card_log": "Training log", "card_close": "Close ✕", "pipe_label": "03 / Pipeline · Experience", "pipe_title": ["Hands-on", "stages"], "pipe_intro": "", "stage_prefix": "stage_", "about_label": "04 / Weights · About me", "about_title": ["Wet lab to", "neural net"], "about_intro": "", "about_side": "About", "out_label": "05 / Outputs · Design work", "out_title": ["Playground", ""], "out_intro": "Design and motion experiments that don't fit a case study.", "out_prefix": "out_", "contact_label": "06 / Deploy · Contact", "contact_title": ["Say", "hello"], "contact_intro": "Research collaborations, internships, or just a good protein story.", "copy_btn": "Click to copy", "copied": "Copied", "resume_btn": "Download résumé", "footer_right": "" },
+  "defaultTheme": "paper"
+};
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const p2 = n => String(n).padStart(2, '0'), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -319,6 +389,11 @@ $('#app').innerHTML = `
 <!-- ===== 1. HERO ===== -->
 <section id="hero" class="hero"><div class="rv"><p class="mono" style="color:var(--accent)">${esc(T.hero_kicker)} &middot; ${esc(M.role)}</p>
   <h1><span>${esc(M.first)}</span><em>${esc(M.last)}</em></h1><p class="tag">${esc(M.tagline)}</p>
+  <a class="pub-badge rv" href="https://doi.org/10.1155/joch/8217730" target="_blank" rel="noopener">
+    <span class="lbl">Published</span>
+    <span class="txt">Journal of Chemistry, Wiley &middot; 2024</span>
+    <i>&rarr;</i>
+  </a>
   <div class="cta"><a class="btn pri" href="#contact">${esc(T.hero_cta)}</a>${D.resume ? `<a class="btn" href="${D.resume}" download="resume.pdf">${esc(T.resume_btn)}</a>` : ''}</div>
   <div class="facts">${D.facts.map(([k, v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('')}</div>
   <p class="mono hint">${esc(T.hero_hint)}</p></div>
@@ -388,8 +463,24 @@ function openNote(i) {
   const p = D.work[i];
   $('#pg').innerHTML = `<button class="x mono" id="xx">${esc(T.card_close)}</button><div class="fig">${media(p.img, p.art, i + 1, p.title)}</div>
     <div><div class="mono" style="color:var(--moss)">${esc(T.model_prefix)}${p2(i + 1)} &middot; ${esc(T.card_label)}</div><h2 style="color:var(--ink)">${esc(p.title)}</h2>
-    <div class="kv"><span>${esc(T.card_focus)}</span><span style="color:var(--ink)">${esc(p.kind)}</span><span>${esc(T.card_when)}</span><span style="color:var(--ink)">${esc(p.when)}</span><span>${esc(T.card_where)}</span><span style="color:var(--ink)">${esc(p.where)}</span></div>
-    <div class="mono" style="margin-top:2.5rem;color:var(--muted)">${esc(T.card_log)}</div><ol>${p.points.map(t => `<li>${esc(t)}</li>`).join('')}</ol>
+    
+    <div class="kv">
+      <span>${esc(T.card_focus)}</span><span style="color:var(--ink)">${esc(p.kind)}</span>
+      <span>${esc(T.card_when)}</span><span style="color:var(--ink)">${esc(p.when)}</span>
+      <span>${esc(T.card_where)}</span><span style="color:var(--ink)">${esc(p.where)}</span>
+      ${p.status ? `<span>${esc(T.card_status)}</span><span style="color:var(--ink)">${esc(p.status)}</span>` : ''}
+      ${p.tools ? `<span>${esc(T.card_tools)}</span><span style="color:var(--ink)">${esc(p.tools)}</span>` : ''}
+      ${p.result ? `<span>${esc(T.card_result)}</span><span style="color:var(--ink)">${esc(p.result)}</span>` : ''}
+    </div>
+    
+    <div class="mono" style="margin-top:2.5rem;color:var(--muted)">${esc(T.card_log)}</div>
+    <ol>${p.points.map(t => `<li>${esc(t)}</li>`).join('')}</ol>
+    
+    ${p.next ? `
+      <div class="mono" style="margin-top:1.5rem;color:var(--muted)">${esc(T.card_next)}</div>
+      <p style="font-size:0.95rem; line-height:1.6; color:var(--ink); margin-top:0.5rem">${esc(p.next)}</p>
+    ` : ''}
+    
     ${p.link ? `<a class="btn" style="margin-top:1.5rem" href="${esc(p.link[1])}" target="_blank" rel="noopener">${esc(p.link[0])} &rarr;</a>` : ''}</div>`;
   nb.classList.add('on'); $('#pg').scrollTop = 0; $('#xx').onclick = closeNote; $('#xx').focus();
 }
