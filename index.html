@@ -7,7 +7,7 @@
 <meta property="og:description" content="Building a deep neural network that predicts how proteins crystallize. Bench-trained in biotechnology, now learning to model it.">
 <link rel="icon" href="images/favicon.png" onerror="this.remove()">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AC%3C/text%3E%3C/svg%3E">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -33,8 +33,10 @@
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font:400 1rem/1.65 var(--body);background:var(--paper);background-attachment:fixed}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 1rem/1.65 var(--body);background:var(--paper);overflow-x:clip}
+body:has(.nb.on){overflow:hidden}
+a,button{touch-action:manipulation}
 /* Subtle grid overlay for the dark theme */
 body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(rgba(242,244,248,0.06) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; z-index: -1; }
 a{color:inherit}button{all:unset;cursor:pointer;box-sizing:border-box}
@@ -73,7 +75,8 @@ body:has(.nb.on) main { transform: scale(0.98); filter: blur(6px); }
 
 /* ===== BOTTOM NAV PILL ===== */
 .dock{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:.25rem;max-width:94vw;overflow-x:auto;
-  background:rgba(28,30,34,0.85);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;padding:.4rem}
+  background:rgba(28,30,34,0.85);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:999px;padding:.4rem;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.dock::-webkit-scrollbar{display:none}
 .dock a{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.15;padding:.4rem 1rem;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background 150ms var(--ease-out), color 150ms var(--ease-out), transform 150ms var(--ease-out)}
 .dock a.on{background:var(--ink);color:var(--paper)}
 .dock a:active{transform:scale(0.96)} 
@@ -86,7 +89,7 @@ body:has(.nb.on) main { transform: scale(0.98); filter: blur(6px); }
 .cur.big{width:48px;height:48px;background:rgba(255,176,153,0.08); border-color:transparent}
 
 /* ===== HERO ===== */
-.hero{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4vw;align-items:center;padding-top:6rem}
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4vw;align-items:center;padding-top:6rem}
 .hero h1{font:300 clamp(4rem,9.5vw,11.5rem)/.85 var(--serif);letter-spacing:-.03em;margin:1rem 0 2rem}
 .hero h1 span,.hero h1 em{display:block}
 @keyframes bl{50%{opacity:0}}
@@ -199,9 +202,9 @@ a.lr span{font:500 .75rem var(--mono);color:var(--muted);text-transform:uppercas
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;padding:3rem 5vw 8rem;color:var(--muted);border-top:1px solid var(--line);margin-top:6rem}
 
 /* ===== ASYMMETRIC MODEL CARD POP-UP ===== */
-.nb{position:fixed;inset:0;z-index:60;background:rgba(28,30,34,.8);backdrop-filter:blur(8px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity 200ms var(--ease-out)}
+.nb{position:fixed;inset:0;z-index:60;background:rgba(28,30,34,.8);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity 200ms var(--ease-out)}
 .nb.on{opacity:1;pointer-events:auto;transition:opacity 400ms ease}
-.page{width:min(1100px,94vw);max-height:90vh;overflow:auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;padding:3rem;position:relative;
+.page{width:min(1100px,94vw);max-height:90vh;max-height:90dvh;overflow:auto;overscroll-behavior:contain;display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;padding:3rem;position:relative;
   background:var(--agar);border:1px solid var(--line);border-radius:16px;box-shadow:0 32px 64px rgba(0,0,0,.6);
   transform:translateY(32px) scale(0.95);transition:transform 200ms var(--ease-out)}
 .nb.on .page{transform:none;transition:transform 500ms var(--ease-drawer)}
@@ -217,12 +220,49 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;paddi
 @media (max-width:860px){
   .hero{grid-template-columns:1fr;padding-top:6.5rem}.dish{order:-1;width:min(85vw,55vh);justify-self:center}
   .sh,.bench{grid-template-columns:1fr}.sh p{grid-column:1}.proto{margin-left:.5rem}
-  .page{grid-template-columns:1fr;padding:2rem 1.5rem}.dock .ck{display:none}.dock a{padding:.4rem .7rem}.open span{display:none}
+  .page{grid-template-columns:1fr;padding:2rem 1.5rem}.dock .ck{display:none}.dock a{padding:.4rem .7rem}
   .ed,.act{grid-template-columns:1fr;gap:.3rem}
   .els{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
   .el.wide { grid-column: auto; aspect-ratio: 1/1.05; }
+  .el.tall { grid-row: auto; aspect-ratio: 1/1.05; }
 }
-@media (hover:hover){.cur{display:block}}
+
+/* ===== MOBILE POLISH ===== */
+@media (max-width:860px){
+  section{padding:5.5rem max(5vw,env(safe-area-inset-left)) 3rem max(5vw,env(safe-area-inset-left))}
+  .hero{min-height:auto}
+  .top{padding:calc(.9rem + env(safe-area-inset-top)) max(1rem,env(safe-area-inset-right)) .5rem max(1rem,env(safe-area-inset-left))}
+  .mk,.open{padding:.45rem .9rem}
+  .hero h1{font-size:clamp(3.2rem,16vw,6.5rem);margin:.75rem 0 1.5rem}
+  .tag{font-size:1.05rem}
+  .sh{margin-bottom:2.5rem;gap:.75rem}
+  .plates{gap:3rem}
+  .plate{grid-template-rows:none}
+  .plate h3{font-size:1.6rem}
+  .dock{bottom:calc(.75rem + env(safe-area-inset-bottom));max-width:calc(100vw - 1rem);scroll-snap-type:x proximity}
+  .dock a{min-height:44px;justify-content:center;scroll-snap-align:center}
+  footer{padding-bottom:calc(7rem + env(safe-area-inset-bottom))}
+  a.lr{flex-wrap:wrap;gap:.25rem 1rem;padding:1.1rem 0}
+  /* no heavy blur/scale behind the sheet on phones */
+  body:has(.nb.on) main{transform:none;filter:none}
+  /* model card becomes a bottom sheet */
+  .nb{place-items:end center}
+  .page{width:100%;max-height:92vh;max-height:92dvh;gap:1.5rem;border-radius:16px 16px 0 0;border-bottom:0;
+    padding:1rem 1.25rem calc(2rem + env(safe-area-inset-bottom));transform:translateY(100%)}
+  .nb.on .page{transform:none}
+  .x{position:sticky;top:0;right:auto;justify-self:end;z-index:3;padding:.65rem 1rem;min-height:44px;display:flex;align-items:center}
+  .page .kv{grid-template-columns:5rem 1fr}
+}
+@media (max-width:560px){
+  .facts div{grid-template-columns:1fr;gap:.1rem}
+  .btn{display:block;text-align:center;margin-right:0;padding:.9rem 1.2rem}
+  .cta .btn{width:100%}
+  .frames{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+  .fr{padding:.5rem}
+  .fr figcaption{flex-direction:column;gap:.2rem}
+}
+@media (max-width:380px){.open span{display:none}}
+@media (hover:hover) and (pointer:fine){.cur{display:block}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
 </style></head>
 <body>
@@ -234,7 +274,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;paddi
 <div class="nb" id="nb" role="dialog" aria-modal="true" aria-label="Project notes"><div class="page" id="pg"></div></div>
 
 <script>
-const D = {"me": {"first": "G K", "last": "Duvakeesh", "mark": "GKD", "role": "Computational biology student", "tagline": "Building a deep neural network that predicts how proteins crystallize. Bench-trained in biotechnology, now learning to model it.", "city": "Chennai", "email": "gkduvakeesh@gmail.com", "photo": "", "resume": "resume.pdf", "about": "I'm a biotechnologist turned computational biologist. I learned the wet lab first, from bioreactors to PCR to AAS, and now I'm using machine learning to predict what the experiment should look like before anyone pipettes."}, "links": [["Code and experiments", "GitHub", "https://github.com/Ar3mis-117"], ["Professional updates", "LinkedIn", "https://www.linkedin.com/in/duvakeesh-g-k-87580535a/"], ["The published paper", "Journal of Chemistry", "https://doi.org/10.1155/joch/8217730"]], "facts": [["Now", "M.Tech Computational Biology, Anna University (2027)"], ["Published", "Journal of Chemistry, Wiley, November 2024"], ["Interested in", "Protein ML, genomics, vision transformers, LLM architecture"]], "work": [{"kind": "Deep learning, protein crystallization", "title": "Protein Crystallization Prediction", "short": "Protein / Crystals", "when": "Ongoing", "where": "Anna University, Chennai", "blurb": "A neural network framework that predicts the reagent recipe needed to crystallize a protein.", "points": ["Developing a deep neural network to predict the reagent recipe for crystallizing a protein."], "link": null, "image": "images/protein-crystallization.jpg", "art": "lattice", "sw": ["#0B6E4F", "#9AD1BD", "#111111"], "img": ""}, {"kind": "Environmental biotechnology, research project", "title": "Biochar Adsorbent for Cd(II) Removal", "short": "Biochar / Adsorbent", "when": "6 months", "where": "Government College of Technology, Coimbatore", "blurb": "Low-cost biochar from coconut shell and spent coffee grounds, built to pull cadmium out of contaminated water.", "points": ["Synthesized and functionalized a mixed biochar adsorbent from agricultural waste for heavy metal removal.", "Fitted Langmuir and Freundlich isotherms to quantify monolayer capacity and surface heterogeneity.", "Ran kinetic studies (pseudo-first and pseudo-second order) and thermodynamics (ΔG°, ΔH°, ΔS°).", "Measured residual Cd(II) by Atomic Absorption Spectroscopy.", "Modeled nonlinear regression curves and produced publication-ready figures in Origin and Excel."], "link": null, "image": "images/biochar-adsorption.jpg", "art": "pores", "sw": ["#3B2F2A", "#C9A66B", "#E8E1D4"], "img": ""}, {"kind": "Publication, peer-reviewed review", "title": "Biochar as a Sustainable Adsorbent for Heavy Metal Removal From Polluted Waters", "short": "Biochar / Review", "when": "November 2024", "where": "Journal of Chemistry (Wiley)", "blurb": "A comprehensive outlook on turning biomass into adsorbents for water remediation. Co-authored.", "points": ["Synthesized the literature on pyrolytic biomass conversion, surface functionalization and sorption kinetics."], "link": ["Read the paper", "https://doi.org/10.1155/joch/8217730"], "image": "images/publication.jpg", "art": "paper", "sw": ["#1D4E89", "#F2F2F0", "#E4572E"], "img": ""}], "play": [{"title": "Poster study", "note": "Illustrator", "image": "images/play-1.jpg", "art": "poster", "img": ""}, {"title": "Motion test", "note": "After Effects", "image": "images/play-2.jpg", "art": "motion", "img": ""}, {"title": "Photo edit", "note": "Photoshop", "image": "images/play-3.jpg", "art": "halftone", "img": ""}, {"title": "Short cut", "note": "Premiere Pro", "image": "images/play-4.jpg", "art": "film", "img": ""}], "experience": [{"org": "TICEL Bio Park, Chennai", "role": "Student Intern", "span": "1 month", "points": ["Downstream bioprocessing, biomolecule separation and purification workflows.", "Microbial tests, staining and quality control evaluations.", "Studied the principles behind MALDI-TOF mass spectrometry, Sanger sequencing, HPLC and column chromatography."]}, {"org": "AviGen Biotech Pvt Ltd", "role": "Student Intern", "span": "1 month", "points": ["Upstream bioprocessing, bioreactor handling and aseptic cell culture.", "Extracted genomic DNA and total RNA for molecular diagnostics.", "PCR amplification, SDS-PAGE and agarose gel electrophoresis."]}, {"org": "Harman Institute of Science and Technology", "role": "Student Intern", "span": "1 month", "points": ["Synthesized and characterized functional nanomaterials.", "Trained in ethical laboratory animal handling and housing under regulatory protocols."]}], "education": [["2027", "M.Tech Computational Biology", "ACT Campus, Anna University, Chennai", "Pursuing"], ["2024", "B.Tech Industrial Biotechnology", "Government College of Technology, Coimbatore", "7.60 CGPA"], ["2020", "Higher Secondary, Class XII", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "90.10%"], ["2018", "Matriculation, Class X", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "83.80%"]], "skills": [["Programming and ML", ["Python", "Pandas", "NumPy", "Scikit-learn", "Keras", "PyTorch", "Statistical data analysis"]], ["Laboratory", ["Molecular biology", "DNA and RNA extraction", "PCR", "SDS-PAGE", "Gel electrophoresis", "Upstream and downstream bioprocessing", "Microbial staining and culture"]], ["Instrumentation", ["Atomic Absorption Spectroscopy"]], ["Software and design", ["Origin", "Microsoft Excel", "Photoshop", "Illustrator", "Premiere Pro", "After Effects"]], ["Languages", ["Tamil (native)", "English (full professional)"]]], "activities": [["Exordium", "Organizing committee member for the inter-college event, Government College of Technology."], ["Sys-Com", "Department committee that handled editing and design work for events, 2020 to 2024."]], "resume": "", "themes": [{"id": "petri", "name": "Petri"}], "text": {"logo": "D_", "open_badge": "Open to collaborations", "nav": [["hero", "Input", "Home"], ["work", "Models", "Projects"], ["exp", "Pipeline", "Experience"], ["about", "Weights", "About"], ["play", "Outputs", "Design"], ["contact", "Deploy", "Contact"]], "hero_kicker": "model.py", "hero_cta": "Get in touch", "hero_hint": "↓ Move over the network, or click to fire a forward pass", "hero_sticker": "model.fit()", "net_alt": "A small neural network passing signals between layers. Move over it or click to fire it.", "net_layers": ["input", "hidden 1", "hidden 2", "output"], "net_epoch": "epoch", "net_loss": "loss", "ticker": ["Protein ML", "Backprop", "Crystallization", "Attention", "Genomics", "PyTorch", "Vision transformers", "Keras", "Biochar", "GPU"], "models_label": "02 / Models · Projects", "models_title": ["Selected", "models"], "models_intro": "Each card is a project. Open one to read its model card.", "model_prefix": "model_", "model_open": "Open model card →", "card_label": "Model card", "card_focus": "Focus", "card_when": "When", "card_where": "Where", "card_log": "Training log", "card_close": "Close ✕", "pipe_label": "03 / Pipeline · Experience", "pipe_title": ["Hands-on", "stages"], "pipe_intro": "", "stage_prefix": "stage_", "about_label": "04 / Weights · About me", "about_title": ["Wet lab to", "neural net"], "about_intro": "", "about_side": "About", "out_label": "05 / Outputs · Design work", "out_title": ["Playground", ""], "out_intro": "Design and motion experiments that don't fit a case study.", "out_prefix": "out_", "contact_label": "06 / Deploy · Contact", "contact_title": ["Say", "hello"], "contact_intro": "Research collaborations, internships, or just a good protein story.", "copy_btn": "Click to copy", "copied": "Copied", "resume_btn": "Download résumé", "footer_right": ""}, "defaultTheme": "paper"};
+const D = {"me": {"first": "G K", "last": "Duvakeesh", "mark": "GKD", "role": "Computational biology student", "tagline": "Building a deep neural network that predicts how proteins crystallize. Bench-trained in biotechnology, now learning to model it.", "city": "Chennai", "email": "gkduvakeesh@gmail.com", "photo": "", "resume": "resume.pdf", "about": "I'm a biotechnologist turned computational biologist. I learned the wet lab first, from bioreactors to PCR to AAS, and now I'm using machine learning to predict what the experiment should look like before anyone pipettes."}, "links": [["Code and experiments", "GitHub", "https://github.com/Ar3mis-117"], ["Professional updates", "LinkedIn", "https://www.linkedin.com/in/duvakeesh-g-k-87580535a/"], ["The published paper", "Journal of Chemistry", "https://doi.org/10.1155/joch/8217730"]], "facts": [["Now", "M.Tech Computational Biology, Anna University (2027)"], ["Published", "Journal of Chemistry, Wiley, November 2024"], ["Interested in", "Protein ML, genomics, vision transformers, LLM architecture"]], "work": [{"kind": "Deep learning, protein crystallization", "title": "Protein Crystallization Prediction", "short": "Protein / Crystals", "when": "Ongoing", "where": "Anna University, Chennai", "blurb": "A neural network framework that predicts the reagent recipe needed to crystallize a protein.", "points": ["Developing a deep neural network to predict the reagent recipe for crystallizing a protein."], "link": null, "image": "images/protein-crystallization.jpg", "art": "lattice", "sw": ["#0B6E4F", "#9AD1BD", "#111111"], "img": ""}, {"kind": "Environmental biotechnology, research project", "title": "Biochar Adsorbent for Cd(II) Removal", "short": "Biochar / Adsorbent", "when": "6 months", "where": "Government College of Technology, Coimbatore", "blurb": "Low-cost biochar from coconut shell and spent coffee grounds, built to pull cadmium out of contaminated water.", "points": ["Synthesized and functionalized a mixed biochar adsorbent from agricultural waste for heavy metal removal.", "Fitted Langmuir and Freundlich isotherms to quantify monolayer capacity and surface heterogeneity.", "Ran kinetic studies (pseudo-first and pseudo-second order) and thermodynamics (ΔG°, ΔH°, ΔS°).", "Measured residual Cd(II) by Atomic Absorption Spectroscopy.", "Modeled nonlinear regression curves and produced publication-ready figures in Origin and Excel."], "link": null, "image": "images/biochar-adsorption.jpg", "art": "pores", "sw": ["#3B2F2A", "#C9A66B", "#E8E1D4"], "img": ""}, {"kind": "Publication, peer-reviewed review", "title": "Biochar as a Sustainable Adsorbent for Heavy Metal Removal From Polluted Waters", "short": "Biochar / Review", "when": "November 2024", "where": "Journal of Chemistry (Wiley)", "blurb": "A comprehensive outlook on turning biomass into adsorbents for water remediation. Co-authored.", "points": ["Synthesized the literature on pyrolytic biomass conversion, surface functionalization and sorption kinetics."], "link": ["Read the paper", "https://doi.org/10.1155/joch/8217730"], "image": "images/publication.jpg", "art": "paper", "sw": ["#1D4E89", "#F2F2F0", "#E4572E"], "img": ""}], "play": [{"title": "Poster study", "note": "Illustrator", "image": "images/play-1.jpg", "art": "poster", "img": ""}, {"title": "Motion test", "note": "After Effects", "image": "images/play-2.jpg", "art": "motion", "img": ""}, {"title": "Photo edit", "note": "Photoshop", "image": "images/play-3.jpg", "art": "halftone", "img": ""}, {"title": "Short cut", "note": "Premiere Pro", "image": "images/play-4.jpg", "art": "film", "img": ""}], "experience": [{"org": "TICEL Bio Park, Chennai", "role": "Student Intern", "span": "1 month", "points": ["Downstream bioprocessing, biomolecule separation and purification workflows.", "Microbial tests, staining and quality control evaluations.", "Studied the principles behind MALDI-TOF mass spectrometry, Sanger sequencing, HPLC and column chromatography."]}, {"org": "AviGen Biotech Pvt Ltd", "role": "Student Intern", "span": "1 month", "points": ["Upstream bioprocessing, bioreactor handling and aseptic cell culture.", "Extracted genomic DNA and total RNA for molecular diagnostics.", "PCR amplification, SDS-PAGE and agarose gel electrophoresis."]}, {"org": "Harman Institute of Science and Technology", "role": "Student Intern", "span": "1 month", "points": ["Synthesized and characterized functional nanomaterials.", "Trained in ethical laboratory animal handling and housing under regulatory protocols."]}], "education": [["2027", "M.Tech Computational Biology", "ACT Campus, Anna University, Chennai", "Pursuing"], ["2024", "B.Tech Industrial Biotechnology", "Government College of Technology, Coimbatore", "7.60 CGPA"], ["2020", "Higher Secondary, Class XII", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "90.10%"], ["2018", "Matriculation, Class X", "Dr. G.S. Kalyanasundaram Memorial School (CBSE)", "83.80%"]], "skills": [["Programming and ML", ["Python", "Pandas", "NumPy", "Scikit-learn", "Keras", "PyTorch", "Statistical data analysis"]], ["Laboratory", ["Molecular biology", "DNA and RNA extraction", "PCR", "SDS-PAGE", "Gel electrophoresis", "Upstream and downstream bioprocessing", "Microbial staining and culture"]], ["Instrumentation", ["Atomic Absorption Spectroscopy"]], ["Software and design", ["Origin", "Microsoft Excel", "Photoshop", "Illustrator", "Premiere Pro", "After Effects"]], ["Languages", ["Tamil (native)", "English (full professional)"]]], "activities": [["Exordium", "Organizing committee member for the inter-college event, Government College of Technology."], ["Sys-Com", "Department committee that handled editing and design work for events, 2020 to 2024."]], "resume": "", "themes": [{"id": "petri", "name": "Petri"}], "text": {"logo": "D_", "open_badge": "Open to collaborations", "nav": [["hero", "Input", "Home"], ["work", "Models", "Projects"], ["exp", "Pipeline", "Experience"], ["about", "Weights", "About"], ["contact", "Deploy", "Contact"]], "hero_kicker": "model.py", "hero_cta": "Get in touch", "hero_hint": "↓ Move over the network, or click to fire a forward pass", "hero_sticker": "model.fit()", "net_alt": "A small neural network passing signals between layers. Move over it or click to fire it.", "net_layers": ["input", "hidden 1", "hidden 2", "output"], "net_epoch": "epoch", "net_loss": "loss", "ticker": ["Protein ML", "Backprop", "Crystallization", "Attention", "Genomics", "PyTorch", "Vision transformers", "Keras", "Biochar", "GPU"], "models_label": "02 / Models · Projects", "models_title": ["Selected", "models"], "models_intro": "Each card is a project. Open one to read its model card.", "model_prefix": "model_", "model_open": "Open model card →", "card_label": "Model card", "card_focus": "Focus", "card_when": "When", "card_where": "Where", "card_log": "Training log", "card_close": "Close ✕", "pipe_label": "03 / Pipeline · Experience", "pipe_title": ["Hands-on", "stages"], "pipe_intro": "", "stage_prefix": "stage_", "about_label": "04 / Weights · About me", "about_title": ["Wet lab to", "neural net"], "about_intro": "", "about_side": "About", "out_label": "05 / Outputs · Design work", "out_title": ["Playground", ""], "out_intro": "Design and motion experiments that don't fit a case study.", "out_prefix": "out_", "contact_label": "06 / Deploy · Contact", "contact_title": ["Say", "hello"], "contact_intro": "Research collaborations, internships, or just a good protein story.", "copy_btn": "Click to copy", "copied": "Copied", "resume_btn": "Download résumé", "footer_right": ""}, "defaultTheme": "paper"};
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const p2 = n => String(n).padStart(2, '0'), reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -260,7 +300,8 @@ function art(k, seed) {
 const media = (img, k, s, a) => img ? `<img src="${img}" alt="${esc(a)}">` : art(k, s);
 
 /* ---------- BUILD THE PAGE ---------- */
-const M = D.me, T = D.text; let z = 0;   
+const M = D.me, T = D.text; let z = 0;
+if (matchMedia('(hover: none)').matches) { T.copy_btn = 'Tap to copy'; T.hero_hint = '↓ Tap the network to fire a forward pass'; }   
 { const lg = $('#logo'), t = T.logo; lg.textContent = t.replace(/_$/, ''); if (t.endsWith('_')) { const u = document.createElement('span'); u.className = 'us'; u.textContent = '_'; lg.appendChild(u); } }
 $('#openTxt').textContent = T.open_badge;
 const sym = n => { const w = n.replace(/\(.*?\)/g, '').split(/[\s-]+/).filter(Boolean); return w.length > 1 ? (w[0][0] + w[1][0]).toUpperCase() : w[0][0].toUpperCase() + (w[0][1] || '').toLowerCase(); };
@@ -305,9 +346,11 @@ $('#app').innerHTML = `
     <div class="rv" style="margin-top:3rem">${D.activities.map(([l, t]) => `<div class="act"><span class="mono" style="color:var(--moss)">${esc(l)}</span><span>${esc(t)}</span></div>`).join('')}</div></div></div></section>
 
 <!-- ===== 5. OUTPUTS ===== -->
+<!-- OUTPUTS SECTION (disabled) -- remove this wrapper and restore the nav entry ["play","Outputs","Design"] to re-enable
 <section id="play">${head(T.out_label, T.out_title[0], T.out_title[1], T.out_intro)}
   <div class="frames">${D.play.map((p, i) => `<figure class="fr rv"><div class="im">${media(p.img, ['pores', 'lattice', 'paper', 'pores'][i % 4], i + 11, p.title)}</div>
     <figcaption class="mono"><span>${esc(T.out_prefix)}${p2(i + 1)} &middot; <span style="color:var(--ink)">${esc(p.title)}</span></span><span>${esc(p.note)}</span></figcaption></figure>`).join('')}</div></section>
+-->
 
 <!-- ===== 6. DEPLOY ===== -->
 <section id="contact"><p class="mono rv" style="color:var(--accent)">${esc(T.contact_label)}</p><h2 class="hi rv">${esc(T.contact_title[0])} <em style="color:var(--moss)">${esc(T.contact_title[1])}</em></h2>
@@ -323,7 +366,7 @@ $('#dock').innerHTML = SECS.map(([id, l, sub]) => `<a href="#${id}" data-s="${id
 $$('#dock a').forEach(a => a.onclick = e => { e.preventDefault(); $('#' + a.dataset.s).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
 const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false });
 const tick = () => $('#ck').textContent = `${M.city} ${fmt.format(new Date())}`; tick(); setInterval(tick, 20000);
-const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$('#dock a').forEach(a => a.classList.toggle('on', a.dataset.s === e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
+const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$('#dock a').forEach(a => { const on = a.dataset.s === e.target.id; a.classList.toggle('on', on); if (on) { const d = $('#dock'); d.scrollTo({ left: a.offsetLeft - (d.clientWidth - a.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' }); } }); }), { rootMargin: '-45% 0px -50% 0px' });
 SECS.forEach(([id]) => so.observe($('#' + id)));
 const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), { threshold: .12 });
 $$('.rv').forEach(el => ro.observe(el));
@@ -364,7 +407,7 @@ addEventListener('keydown', e => { if (e.key === 'Escape') closeNote(); });
     L.forEach((n, l) => { for (let i = 0; i < n; i++) nodes.push({ l, x: W * (.12 + .76 * l / (L.length - 1)), y: H * (.16 + .68 * i / (n - 1)), a: 0 }); });
     nodes.forEach(a => nodes.forEach(b => { if (b.l === a.l + 1) edges.push({ a, b, w: Math.random() * 2 - 1 }); }));
   }
-  function fit() { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); build(); $('#cnt').textContent = `${T.net_epoch} 0000 · ${T.net_loss} 0.9000`; }
+  function fit() { if (W && cv.clientWidth === W && cv.clientHeight === H) return; W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); build(); $('#cnt').textContent = `${T.net_epoch} 0000 · ${T.net_loss} 0.9000`; }
   function wave(n) {
     n.a = 1;
     edges.forEach(e => { if (e.a === n && Math.random() < .75) sig.push({ e, p: 0, v: .008 + Math.random() * .008 }); });
@@ -391,6 +434,8 @@ addEventListener('keydown', e => { if (e.key === 'Escape') closeNote(); });
   }
   cv.addEventListener('pointermove', e => { const b = cv.getBoundingClientRect(); mx = (e.clientX - b.left) * W / b.width; my = (e.clientY - b.top) * H / b.height; });
   cv.addEventListener('pointerleave', () => { mx = my = -999; });
+  cv.addEventListener('pointercancel', () => { mx = my = -999; });
+  cv.style.touchAction = 'pan-y';
   cv.addEventListener('pointerdown', () => { for (let i = 0; i < 4; i++) fire(); });
   addEventListener('resize', fit);
   fit(); requestAnimationFrame(draw);
