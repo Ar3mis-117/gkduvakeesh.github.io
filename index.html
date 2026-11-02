@@ -357,7 +357,8 @@ $('#app').innerHTML = `
   <p class="rv" style="font:400 1.6rem/1.4 var(--serif);max-width:36rem;margin:0 0 3rem;color:var(--ink)">${esc(T.contact_intro)}</p>
   <div class="rv"><a class="btn" id="copy" href="#">${esc(M.email)} &middot; <span style="color:var(--moss)">${esc(T.copy_btn)}</span></a>${D.resume ? `<a class="btn" href="${D.resume}" download="resume.pdf">${esc(T.resume_btn)}</a>` : ''}</div>
   <div class="rv" style="margin-top:4rem">${D.links.map(([c, n, u]) => `<a class="lr" href="${esc(u)}" target="_blank" rel="noopener">${esc(n)}<span style="color:var(--moss)">${esc(c)}</span></a>`).join('')}</div></section>
-
+<!-- ===== FOOTER ===== -->
+<footer class="mono">${T.footer_right ? `<span>${esc(T.footer_right)}</span>` : ''}</footer>`;
 
 /* ---------- BOTTOM NAV, CLOCK, SCROLL-REVEAL ---------- */
 const SECS = T.nav;
